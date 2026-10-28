@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ailen Pacheco Caero · Portfolio & Strategic Creative</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#04100f;--bg2:#071b1a;--card:#0b2523;--line:#14403d;--teal:#2de2d0;--teal2:#0fa89b;--text:#e6fbf8;--mute:#8fb5b0;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px;background:var(--bg)}
+body{
+  background:radial-gradient(900px 500px at 85% -5%,rgba(45,226,208,.18),transparent 60%),
+             radial-gradient(700px 500px at -10% 40%,rgba(15,168,155,.12),transparent 60%),var(--bg);
+  color:var(--text);font:16px/1.65 Inter,system-ui,sans-serif;
+}
+h1,h2,h3,h4{font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.2}
+a{color:inherit;text-decoration:none}
+
+/* Navegación */
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:rgba(4,16,15,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav b{font-family:'Space Grotesk';color:var(--teal);font-size:1.2rem}
+nav div{display:flex;gap:22px;font-size:.9rem;color:var(--mute);overflow-x:auto}
+nav a:hover{color:var(--teal)}
+
+section{padding:80px 5vw;max-width:1200px;margin:auto}
+
+/* Hero */
+.hero{min-height:85vh;display:flex;flex-direction:column;justify-content:center}
+.tag{display:inline-block;border:1px solid var(--teal2);color:var(--teal);padding:6px 14px;border-radius:99px;font-size:.82rem;width:fit-content;margin-bottom:22px;background:rgba(45,226,208,.07)}
+.hero h1{font-size:clamp(2.4rem,7vw,5.2rem);letter-spacing:-.03em}
+.hero h1 span{background:linear-gradient(90deg,var(--teal),#7af5e8 50%,var(--teal2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:650px;color:var(--mute);margin:24px 0 34px;font-size:1.15rem;line-height:1.7}
+
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:13px 26px;border-radius:12px;font-weight:500;border:1px solid var(--teal);cursor:pointer;font:500 1rem Inter;transition:.25s;display:inline-flex;align-items:center;justify-content:center}
+.btn.p{background:var(--teal);color:#032a26}
+.btn.p:hover{box-shadow:0 0 30px rgba(45,226,208,.5);transform:translateY(-2px)}
+.btn.s{background:transparent;color:var(--teal)}
+.btn.s:hover{background:rgba(45,226,208,.1)}
+
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:12px}
+h2::before{content:attr(data-n);display:block;font:500 .85rem Inter;color:var(--teal);letter-spacing:.2em;margin-bottom:8px}
+.lead{color:var(--mute);max-width:720px;margin-bottom:35px}
+
+/* Sobre Mí */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.profile-card{display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:30px}
+.profile-img{width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid var(--teal);box-shadow:0 0 25px rgba(45,226,208,.25);margin-bottom:16px}
+.stats{display:grid;gap:14px;width:100%;margin-top:16px}
+.stat{background:rgba(4,16,15,.6);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{font:700 1.8rem 'Space Grotesk';color:var(--teal);display:block}
+
+/* Experiencia */
+.tl{border-left:2px solid var(--line);padding-left:28px;display:grid;gap:34px}
+.job{position:relative}
+.job::before{content:"";position:absolute;left:-37px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px rgba(45,226,208,.2)}
+.job small{color:var(--teal);font-size:.85rem;font-weight:600}
+.job h3{font-size:1.35rem;margin:4px 0}
+.job em{color:var(--mute);font-style:normal;display:block;margin-bottom:8px}
+.job ul{margin:8px 0 0 18px;color:var(--mute)}
+
+/* Subtítulos de sección */
+.portfolio-subhead{
+  font-size:1.5rem;
+  color:var(--teal);
+  margin:45px 0 20px 0;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.portfolio-subhead::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* 1. Logotipos */
+.logo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:20px;
+  margin-bottom:50px;
+}
+.logo-card{
+  background:#ffffff;
+  border-radius:18px;
+  padding:30px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--line);
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  transition:.3s ease;
+  height:200px;
+  overflow:hidden;
+}
+.logo-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--teal);
+  box-shadow:0 15px 35px rgba(45,226,208,.25);
+}
+.logo-crop{
+  width:100%;
+  height:120px;
+  background-image:url('image_999e78.png');
+  background-repeat:no-repeat;
+  background-size:100% auto;
+  transition:transform .3s ease;
+}
+.logo-crop.l1{ background-position: center 2%; }
+.logo-crop.l2{ background-position: center 32%; }
+.logo-crop.l3{ background-position: center 66%; }
+.logo-crop.l4{ background-position: center 98%; }
+.logo-info{
+  margin-top:12px;
+  font-size:.85rem;
+  font-weight:600;
+  color:#111827;
+  text-align:center;
+  font-family:'Space Grotesk', sans-serif;
+}
+
+/* 2. Artes Gráficos */
+.arts-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+  gap:20px;
+  margin-bottom:50px;
+}
+.art-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.3s ease;
+  display:flex;
+  flex-direction:column;
+}
+.art-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--teal);
+  box-shadow:0 15px 40px rgba(45,226,208,.2);
+}
+.art-box{
+  width:100%;
+  aspect-ratio:1/1;
+  background-image:url('image_999dbc.png');
+  background-size:300% 400%;
+  background-repeat:no-repeat;
+}
+.art-box.a1 { background-position: 0% 0%; }
+.art-box.a2 { background-position: 50% 0%; }
+.art-box.a3 { background-position: 100% 0%; }
+.art-box.a4 { background-position: 0% 33.33%; }
+.art-box.a5 { background-position: 50% 33.33%; }
+.art-box.a6 { background-position: 100% 33.33%; }
+.art-box.a7 { background-position: 0% 66.66%; }
+.art-box.a8 { background-position: 50% 66.66%; }
+.art-box.a9 { background-position: 100% 66.66%; }
+.art-box.a10{ background-position: 0% 100%; }
+.art-box.a11{ background-position: 50% 100%; }
+.art-box.a12{ background-position: 100% 100%; }
+
+.art-caption{
+  padding:14px;
+  font-size:.88rem;
+  color:var(--text);
+  font-weight:500;
+  text-align:center;
+  background:rgba(4,16,15,.6);
+  border-top:1px solid var(--line);
+}
+
+/* 3. Fotografía de Retrato */
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:22px;
+  margin-bottom:50px;
+}
+.photo-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.3s ease;
+  aspect-ratio:4/5;
+}
+.photo-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--teal);
+  box-shadow:0 15px 40px rgba(45,226,208,.25);
+}
+.photo-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* 4. Diseño de Stands */
+.stands-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(450px, 1fr));
+  gap:26px;
+  margin-bottom:50px;
+}
+.stand-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  transition:.3s ease;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+.stand-card:hover{
+  border-color:var(--teal);
+  transform:translateY(-5px);
+  box-shadow:0 15px 40px rgba(45,226,208,.2);
+}
+.stand-card img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:cover;
+}
+.stand-info{
+  padding:20px;
+  background:rgba(4,16,15,.8);
+  border-top:1px solid var(--line);
+}
+.stand-info h4{
+  font-size:1.15rem;
+  color:var(--teal);
+  margin-bottom:6px;
+}
+.stand-info p{
+  font-size:.9rem;
+  color:var(--mute);
+}
+
+/* 5. Sitio Web */
+.web-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:35px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:50px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  flex-wrap:wrap;
+}
+.web-info{max-width:600px}
+.web-info h3{font-size:1.6rem; color:var(--text); margin-bottom:10px}
+.web-info p{color:var(--mute); margin-bottom:20px; line-height:1.7}
+
+/* 6. Producción de Video */
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+  gap:26px;
+}
+.video-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  transition:.3s ease;
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  display:flex;
+  flex-direction:column;
+}
+.video-card:hover{
+  border-color:var(--teal);
+  transform:translateY(-5px);
+  box-shadow:0 15px 40px rgba(45,226,208,.2);
+}
+.video-wrapper{
+  width:100%;
+  background:#000;
+  position:relative;
+}
+.video-wrapper video{
+  width:100%;
+  height:auto;
+  max-height:480px;
+  display:block;
+  object-fit:contain;
+}
+.video-info{
+  padding:18px 20px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.video-info h4{
+  font-size:1.1rem;
+  color:var(--teal);
+  margin-bottom:6px;
+}
+.video-info p{
+  font-size:.88rem;
+  color:var(--mute);
+}
+
+/* Modales para fotos y artes */
+.modal{
+  position:fixed;inset:0;z-index:999;
+  background:rgba(4,16,15,.92);
+  backdrop-filter:blur(10px);
+  display:none;align-items:center;justify-content:center;
+  padding:20px;
+}
+.modal.open{display:flex}
+.modal-content{
+  position:relative;
+  max-width:650px;
+  width:100%;
+  background:var(--card);
+  border:1px solid var(--teal);
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 0 50px rgba(45,226,208,.3);
+}
+.modal-preview{
+  width:100%;
+  aspect-ratio:1/1;
+  border-radius:12px;
+  background-image:url('image_999dbc.png');
+  background-size:300% 400%;
+  margin-bottom:15px;
+}
+.modal-img-preview{
+  width:100%;
+  max-height:75vh;
+  object-fit:contain;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+.modal-close{
+  position:absolute;top:12px;right:16px;
+  color:var(--teal);font-size:1.8rem;cursor:pointer;line-height:1;
+}
+
+/* Habilidades y Formación */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{padding:9px 18px;border-radius:99px;background:var(--card);border:1px solid var(--line);font-size:.92rem}
+.chips span:hover{border-color:var(--teal);color:var(--teal)}
+.edu{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;max-width:680px}
+
+/* Sección Perfil de Instagram */
+.insta-section{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:40px;
+  text-align:center;
+  margin-bottom:60px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+.insta-section h3{font-size:1.8rem; color:var(--text); margin-bottom:12px}
+.insta-section p{color:var(--mute); max-width:600px; margin:0 auto 24px}
+
+/* Contacto y Footer */
+.contact{text-align:center}
+.contact h2{font-size:clamp(2.2rem,6vw,4.2rem)}
+.contact .btns{justify-content:center;margin-top:30px}
+footer{text-align:center;color:var(--mute);font-size:.85rem;padding:30px}
+.rv{opacity:0;transform:translateY(24px);transition:.8s}.rv.on{opacity:1;transform:none}
+
+@media(max-width:760px){
+  .about{grid-template-columns:1fr}
+  nav div{gap:14px}
+  section{padding:64px 5vw}
+  .stands-grid{grid-template-columns:1fr}
+  .web-card{flex-direction:column; text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <b id="logo">Ailu</b>
+  <div>
+    <a href="#sobre">Sobre mí</a>
+    <a href="#experiencia">Trayectoria</a>
+    <a href="#portafolio">Portafolio</a>
+    <a href="#estudios">Habilidades</a>
+    <a href="#instagram">Perfil de Instagram</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <span class="tag">Curiosa por naturaleza, creativa por elección</span>
+  <h1>Transformo ideas en <span>experiencias visuales</span> que conectan y posicionan marcas.</h1>
+  <p>Con 5 años de trayectoria en diseño gráfico, marketing digital y producción audiovisual, combino visión estratégica y dirección creativa para hacer destacar negocios en entornos altamente competitivos.</p>
+  <div class="btns">
+    <a class="btn p" href="#portafolio">Explorar proyectos multimedia</a>
+    <button class="btn s" onclick="window.print()">Descargar CV (PDF)</button>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre" class="rv">
+  <h2 data-n="01 — SOBRE MÍ">Visión & Identidad</h2>
+  <div class="about">
+    <div class="lead" style="margin:0; font-size:1.08rem; line-height:1.8;">
+      Soy <strong>Ailen Pacheco Caero</strong> (conocida cariñosamente como <em>Ailu</em>), profesional en diseño y marketing radicada en Cochabamba, Bolivia. A lo largo de 5 años en la industria creativa, he liderado estrategias visuales adaptadas a sectores tan diversos como la ciberseguridad, soluciones tecnológicas corporativas, retail de hogar y agencias de marketing.<br><br>
+      Mi enfoque combina creatividad estético-comercial con una sólida base técnica. Desarrollo proyectos end-to-end: desde el diseño de marca, stands promocionales y sitios web, hasta la producción audiovisual y sesiones de fotografía de retrato.
+    </div>
+    <div class="profile-card">
+      <img src="image_638e13.png" alt="Ailen Pacheco Caero" class="profile-img">
+      <h3 style="font-size:1.3rem;">Ailen Pacheco Caero</h3>
+      <p style="color:var(--teal); font-size:0.9rem;">Cochabamba, Bolivia</p>
+      <div class="stats">
+        <div class="stat"><b>5 Años</b><span style="font-size:0.85rem; color:var(--mute);">Experiencia global en diseño y marketing</span></div>
+        <div class="stat"><b>Multi-sector</b><span style="font-size:0.85rem; color:var(--mute);">Tech B2B, Retail, Agencia y Fotografía</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section id="experiencia" class="rv">
+  <h2 data-n="02 — EXPERIENCIA">Trayectoria Estratégica</h2>
+  <p class="lead">5 años construyendo identidades, campañas multicanal y comunicación visual estratégica.</p>
+  <div class="tl">
+    <div class="job">
+      <small>2.5 Años · Actualidad</small>
+      <h3>Diseño Gráfico, Comunicación & Marketing Digital</h3>
+      <em>GOIT · Soluciones Tecnológicas, Ciberseguridad e Infraestructura (Bolivia & Perú)</em>
+      <ul>
+        <li>Gestión integral de la identidad visual corporativa y sus líneas tecnológicas (GOHELIOS, GOCONNECT, GOPROTECT, GOVISION, GOTALOS).</li>
+        <li>Diseño de arquitectura gráfica para eventos corporativos, booths de exposición e instalaciones institucionales.</li>
+        <li>Desarrollo de piezas publicitarias, presentaciones ejecutivas, sitio web y material audiovisual especializado para el sector B2B.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <small>2 Años</small>
+      <h3>Diseñadora Gráfica & Creadora de Contenido Audiovisual</h3>
+      <em>Home Store · Artículos para el Hogar</em>
+      <ul>
+        <li>Dirección de arte y gestión creativa de contenidos visuales para redes sociales.</li>
+        <li>Planificación y producción fotográfica / audiovisual para promociones y catálogos de producto.</li>
+        <li>Diseño de souvenirs corporativos, material publicitario impreso y campañas estacionales.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <small>6 Meses · Pasantía</small>
+      <h3>Pasante de Marketing y Diseño Gráfico</h3>
+      <em>Ajna Consulting · Agencia de Marketing</em>
+      <ul>
+        <li>Creación de piezas gráficas multicanal para marcas locales e internacionales (Crispychip, Mangata, DigitalGo, entre otras).</li>
+      </ul>
+    </div>
+    <div class="job">
+      <small>6 Meses · Pasantía</small>
+      <h3>Pasante de Comunicación & Diseño</h3>
+      <em>Wislla’s Grill</em>
+      <ul>
+        <li>Diseño de menú, material promocional para punto de venta y soporte en comunicación digital.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <small>Independiente</small>
+      <h3>Fotografía Social, Retrato & Proyectos Independientes</h3>
+      <em>Freelance</em>
+      <ul>
+        <li>Dirección de sesiones fotográficas enfocadas en retrato de personas, composición estética y fotografía comercial.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PORTAFOLIO MULTIMEDIA -->
+<section id="portafolio" class="rv">
+  <h2 data-n="03 — PORTAFOLIO MULTIMEDIA">Muestra de Trabajos Reales</h2>
+  <p class="lead">Explora mis proyectos de identidad, campañas digitales, fotografía de retrato, arquitectura de stands, desarrollo web y producciones audiovisuales.</p>
+
+  <!-- 1. LOGOTIPOS -->
+  <div class="portfolio-subhead">01. Logotipos e Identidad de Marca</div>
+  <div class="logo-grid">
+    <div class="logo-card">
+      <div class="logo-crop l1"></div>
+      <div class="logo-info">Brochetas Restaurante</div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-crop l2"></div>
+      <div class="logo-info">Pro Urbano · Bienes Raíces</div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-crop l3"></div>
+      <div class="logo-info">Aegis · Ciberseguridad</div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-crop l4"></div>
+      <div class="logo-info">GoTalos · Industrial Security</div>
+    </div>
+  </div>
+
+  <!-- 2. ARTES GRÁFICOS -->
+  <div class="portfolio-subhead">02. Artes Gráficos & Campañas de Redes Sociales</div>
+  <div class="arts-grid">
+    <div class="art-card" onclick="openModal('a1', 'Nuestra Boda · Home Store')">
+      <div class="art-box a1"></div>
+      <div class="art-caption">Nuestra Boda · Home Store</div>
+    </div>
+    <div class="art-card" onclick="openModal('a2', 'Taller de Salsas · Evento')">
+      <div class="art-box a2"></div>
+      <div class="art-caption">Taller de Salsas · Gastronomía</div>
+    </div>
+    <div class="art-card" onclick="openModal('a3', 'Campañas Carnaval · Home Store')">
+      <div class="art-box a3"></div>
+      <div class="art-caption">Carnaval · Home Store</div>
+    </div>
+    <div class="art-card" onclick="openModal('a4', 'Electro Ofertas · Retail')">
+      <div class="art-box a4"></div>
+      <div class="art-caption">Electro Ofertas · Promocional</div>
+    </div>
+    <div class="art-card" onclick="openModal('a5', 'Carbón · Gastronomía & Redes')">
+      <div class="art-box a5"></div>
+      <div class="art-caption">Carbón · Publicidad Gastronómica</div>
+    </div>
+    <div class="art-card" onclick="openModal('a6', 'Defensa Personal · Deporte')">
+      <div class="art-box a6"></div>
+      <div class="art-caption">Defensa Personal · Campaña RRSS</div>
+    </div>
+    <div class="art-card" onclick="openModal('a7', 'Wislla\'s Grill · 2x1 Promo')">
+      <div class="art-box a7"></div>
+      <div class="art-caption">Wislla's Grill · Promo 2x1</div>
+    </div>
+    <div class="art-card" onclick="openModal('a8', 'Crispy Chips · Snacks')">
+      <div class="art-box a8"></div>
+      <div class="art-caption">Crispy Chips · Campaña Sabor</div>
+    </div>
+    <div class="art-card" onclick="openModal('a9', 'Mangata · Cosmética & Belleza')">
+      <div class="art-box a9"></div>
+      <div class="art-caption">Mangata · Productos de Belleza</div>
+    </div>
+    <div class="art-card" onclick="openModal('a10', 'Villa Capra · Inmobiliaria')">
+      <div class="art-box a10"></div>
+      <div class="art-caption">Villa Capra · Inmobiliaria & Estilo</div>
+    </div>
+    <div class="art-card" onclick="openModal('a11', 'Coimtec ESET · Ciberseguridad')">
+      <div class="art-box a11"></div>
+      <div class="art-caption">Coimtec · Antivirus ESET</div>
+    </div>
+    <div class="art-card" onclick="openModal('a12', 'GOIT · Autodesk Maya 3D')">
+      <div class="art-box a12"></div>
+      <div class="art-caption">GOIT · Tecnología & Modelado 3D</div>
+    </div>
+  </div>
+
+  <!-- 3. FOTOGRAFÍA DE RETRATO Y PERSONAS -->
+  <div class="portfolio-subhead">03. Fotografía de Retrato & Composición</div>
+  <div class="photo-grid">
+    <div class="photo-card" onclick="openImgModal('image_6391d7.png', 'Sesión de Retrato · Estilo Nocturno')">
+      <img src="image_6391d7.png" alt="Sesión de Retrato 1">
+    </div>
+    <div class="photo-card" onclick="openImgModal('image_6391d1.png', 'Sesión de Retrato · Actitud & Enfoque')">
+      <img src="image_6391d1.png" alt="Sesión de Retrato 2">
+    </div>
+    <div class="photo-card" onclick="openImgModal('image_6391b8.png', 'Fotografía de Persona · Retrato Editorial')">
+      <img src="image_6391b8.png" alt="Sesión de Retrato 3">
+    </div>
+    <div class="photo-card" onclick="openImgModal('image_6391b3.png', 'Fotografía de Persona · Primer Plano')">
+      <img src="image_6391b3.png" alt="Sesión de Retrato 4">
+    </div>
+    <div class="photo-card" onclick="openImgModal('image_639195.png', 'Sesión Exterior · Luz Cálida y Atardecer')">
+      <img src="image_639195.png" alt="Sesión de Retrato 5">
+    </div>
+    <div class="photo-card" onclick="openImgModal('image_639176.png', 'Sesión Exterior · Retrato Atardecer')">
+      <img src="image_639176.png" alt="Sesión de Retrato 6">
+    </div>
+  </div>
+
+  <!-- 4. DISEÑO DE STANDS Y ESPACIOS DE EXPOSICIÓN -->
+  <div class="portfolio-subhead">04. Arquitectura Gráfica & Diseño de Stands</div>
+  <div class="stands-grid">
+    <div class="stand-card">
+      <img src="image_639172.png" alt="Diseño de Stand GOIT GoVision">
+      <div class="stand-info">
+        <h4>Stand de Exposición · GoVision & Aegis XOC</h4>
+        <p>Diseño espacial con módulos LED, iluminación neón y paneles gráficos interactivos para la presentación de soluciones de visión artificial y ciberseguridad.</p>
+      </div>
+    </div>
+    <div class="stand-card">
+      <img src="image_639157.png" alt="Diseño de Stand GOIT GoTalos">
+      <div class="stand-info">
+        <h4>Stand Corporativo · GOIT & GoTalos Industrial</h4>
+        <p>Estructuración de booth de gran formato para feria tecnológica, integrando recepción, mostradores interactivos y señalética corporativa.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. DISEÑO DE SITIOS WEB -->
+  <div class="portfolio-subhead">05. Diseño & Estructuración Web</div>
+  <div class="web-card">
+    <div class="web-info">
+      <h3>Grupo GOIT · Sitio Web Corporativo</h3>
+      <p>Diseño y estructuración visual del portal web institucional de Grupo GOIT. Alineación de la arquitectura visual con la oferta de servicios en ciberseguridad, redes e infraestructura para Bolivia y Perú.</p>
+      <a class="btn p" href="https://grupogoit.com/" target="_blank" rel="noopener">Visitar Sitio Web (grupogoit.com)</a>
+    </div>
+    <div style="flex:1; min-width:280px; background:rgba(45,226,208,.08); border:1px dashed var(--teal); border-radius:16px; padding:30px; text-align:center;">
+      <span style="font-size:2.5rem; display:block; margin-bottom:10px;">🌐</span>
+      <b style="color:var(--teal); font-size:1.1rem; display:block;">Plataforma Oficial</b>
+      <small style="color:var(--mute);">grupogoit.com</small>
+    </div>
+  </div>
+
+  <!-- 6. PRODUCCIÓN DE VIDEO -->
+  <div class="portfolio-subhead">06. Producción y Edición Audiovisual</div>
+  <div class="video-grid">
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <video controls preload="metadata" playsinline>
+          <source src="AQOgxCuluQrmchZdqHE795lAk-kgSsTCdhQmRhFF5ZujGiNK0ADSck7LHNjASwHYSY4e28jCVnrVnGWlUcL3Yju78ikzUqutO98ZH1GcLw.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
+      <div class="video-info">
+        <h4>Noticiero Tecnológico IT NOW!</h4>
+        <p>Cápsula informativa de actualización tecnológica, conducción en cámara, edición de ritmo e inserción de gráficos animados.</p>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <video controls preload="metadata" playsinline>
+          <source src="AQMRo0mW3HPleQ87kGQDxLMMtrtTxAhjeM1pXaK4XbajrGK4pg7zhqnsCnf6gE3_Vmn5_qsqMPud10D9-PnkaIQ.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
+      <div class="video-info">
+        <h4>Ciber SOC · GOIT Security</h4>
+        <p>Spot publicitario explicativo B2B sobre servicios de protección de datos, monitoreo de amenazas y ciberseguridad.</p>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <video controls preload="metadata" playsinline>
+          <source src="AQNOxmivB4lOVzy4Yoy3SrQSAqBETrmQoxW1VYsQY4T9OTinHhgkXhw3uzpgPUNiiIakpG93ET3Ojd0BgK7jFV52mdXidHnlI-c.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
+      <div class="video-info">
+        <h4>HPE Discover Las Vegas · Cobertura Especial</h4>
+        <p>Cobertura audiovisual de evento internacional de tecnología, edición con música enérgica, cortes de ritmo y animación gráfica.</p>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <video controls preload="metadata" playsinline>
+          <source src="AQO6BYhBkmKRLKKpbEIfY-XXzO2FSD_Tjc-xe38SHwnMn7N5usl_ch8ibhszF1Wh8Sui1hoHgsWqjXovVZypNktM.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
+      <div class="video-info">
+        <h4>Home Store · Black Days Store Spot</h4>
+        <p>Video dinámico en tendencia para redes sociales enfocado en promociones de tienda, actuación de equipo y engagement comercial.</p>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <video controls preload="metadata" playsinline>
+          <source src="AQPTpB0MrcMCIhilow1yvGlO2qQ5ceNRGS9j6MK8FaUGS0kFdU5qND2OGaJiLJn_7MGVXDKS4SfdQyQzf01aT_mlWVoPL6oKFaTAzUVJpd8H2w.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
+      <div class="video-info">
+        <h4>GoVision · Inteligencia Artificial & Visión por Computadora</h4>
+        <p>Video demostrativo de producto tecnológico con superposición de interfaz de analítica, mapas de calor y reconocimiento en tiempo real.</p>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-wrapper">
+        <video controls preload="metadata" playsinline>
+          <source src="AQO7ao04QMJV5sIwod7lYmE8XDmdI6edjUgCLQ2BfwAl5nkUKnjLabMz6vM9PFjaQGEaZIVDU55PYgzf1bjdIVG1MNQQVAgTUOo.mp4" type="video/mp4">
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
+      <div class="video-info">
+        <h4>Animación de Identidad GOIT (10 Años)</h4>
+        <p>Motion graphics y animación del logotipo institucional para celebración de aniversario corporativo.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HABILIDADES Y FORMACIÓN -->
+<section id="estudios" class="rv">
+  <h2 data-n="04 — ESPECIALIDADES">Habilidades & Formación</h2>
+  <div class="chips" style="margin-bottom:30px">
+    <span>Diseño Gráfico & Branding</span>
+    <span>Marketing Digital & RRSS</span>
+    <span>Producción y Edición de Video</span>
+    <span>Fotografía de Retrato y Producto</span>
+    <span>Diseño de Eventos & Stands</span>
+    <span>Estrategia de Contenido B2B/B2C</span>
+    <span>Diseño Web & UX/UI Básica</span>
+    <span>Merchandising Corporativo</span>
+  </div>
+  <div class="edu">
+    <h3>Diseño Gráfico & Marketing Digital</h3>
+    <p style="color:var(--teal); margin-top:4px;">Cochabamba, Bolivia</p>
+    <p style="color:var(--mute);margin-top:8px">Formación especializada en comunicación visual, estrategia publicitaria, gestión de marcas y producción audiovisual con enfoque comercial y de negocios.</p>
+  </div>
+</section>
+
+<!-- SECCIÓN PERFIL DE INSTAGRAM -->
+<section id="instagram" class="rv">
+  <div class="insta-section">
+    <span style="font-size:3rem; display:block; margin-bottom:10px;">📸</span>
+    <h3>Perfil de Instagram</h3>
+    <p>Conoce más sobre mis proyectos creativos del día a día, sesiones fotográficas, tras de cámaras y contenido audiovisual en mi cuenta profesional.</p>
+    <a class="btn p" href="https://www.instagram.com/ailenpacheco_/" target="_blank" rel="noopener">Ver Instagram (@ailenpacheco_)</a>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="contact rv">
+  <h2 data-n="05 — CONTACTO">¿Listo para impulsar tu <span style="color:var(--teal)">próximo proyecto</span>?</h2>
+  <p class="lead" style="margin:14px auto 0">Estoy disponible para colaborar en proyectos creativos, consultorías de marca o alianzas estratégicas. ¡Hablemos!</p>
+  <div class="btns">
+    <a class="btn p" href="https://wa.me/59160740496" target="_blank" rel="noopener">WhatsApp Directo (60740496)</a>
+    <a class="btn s" href="https://www.linkedin.com/in/ailen-pacheco-08a7b3257/" target="_blank" rel="noopener">Perfil de LinkedIn</a>
+    <a class="btn s" href="https://www.instagram.com/ailenpacheco_/" target="_blank" rel="noopener">Perfil de Instagram</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Ailen Pacheco Caero (Ailu) · Cochabamba, Bolivia
+</footer>
+
+<!-- LIGHTBOX MODAL PARA EXPANDIR ARTES -->
+<div class="modal" id="artModal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <div class="modal-preview" id="modalPreview"></div>
+    <h4 id="modalTitle" style="color:var(--teal);"></h4>
+  </div>
+</div>
+
+<!-- LIGHTBOX MODAL PARA FOTOGRAFÍAS -->
+<div class="modal" id="imgModal" onclick="closeImgModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="modal-close" onclick="closeImgModal()">&times;</span>
+    <img src="" id="fullImgPreview" class="modal-img-preview" alt="Vista previa">
+    <h4 id="fullImgTitle" style="color:var(--teal);"></h4>
+  </div>
+</div>
+
+<script>
+// Modal para artes gráficos
+function openModal(classIndex, title) {
+  const modal = document.getElementById('artModal');
+  const preview = document.getElementById('modalPreview');
+  const modalTitle = document.getElementById('modalTitle');
+  preview.className = 'modal-preview ' + classIndex;
+  modalTitle.textContent = title;
+  modal.classList.add('open');
+}
+function closeModal() {
+  document.getElementById('artModal').classList.remove('open');
+}
+
+// Modal para fotografías de retrato
+function openImgModal(src, title) {
+  const modal = document.getElementById('imgModal');
+  const fullImgPreview = document.getElementById('fullImgPreview');
+  const fullImgTitle = document.getElementById('fullImgTitle');
+  fullImgPreview.src = src;
+  fullImgTitle.textContent = title;
+  modal.classList.add('open');
+}
+function closeImgModal() {
+  document.getElementById('imgModal').classList.remove('open');
+}
+
+// Observador de animación al desplazarse
+const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && x.target.classList.add('on')), {threshold:.1});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
